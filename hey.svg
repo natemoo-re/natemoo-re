@@ -1,6 +1,9 @@
 <svg width="191" height="128" viewBox="0 0 191 128" fill="none" 
     xmlns="http://www.w3.org/2000/svg">
     <style>
+        g:hover #line {
+            stroke: #F00;
+        }
         #line {
             stroke-dasharray: var(--length);
             stroke-dashoffset: calc(var(--length) * -1);
