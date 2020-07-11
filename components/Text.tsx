@@ -34,7 +34,9 @@ const Text: React.FC<any> = ({ children = '', weight = 'default', family = 'defa
           fontFamily: families[family],
           color: colors[color],
           fontWeight: weights[weight]
-        }}>
+        }}
+          {...props}
+        >
         {children}
       </p>
   );
