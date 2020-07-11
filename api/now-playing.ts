@@ -2,12 +2,19 @@ import { NowRequest, NowResponse } from "@vercel/node";
 import { nowPlaying } from "../utils/spotify";
 import { renderToString } from 'react-dom/server';
 import { Player, None } from '../components/NowPlaying';
+import { decode } from 'querystring';
 
 
 export default async function (req: NowRequest, res: NowResponse) {
-  res.setHeader('Content-Type', 'image/svg+xml');
-
   const { item } = await nowPlaying();
+
+  const params = decode(req.url.split('?')[1]) as any;
+  if (params && typeof params.open !== 'undefined') {
+    res.writeHead(302, {
+      Location: item.external_urls.spotify
+    });
+    return res.end();
+  }
 
   if (!item) {
     const text = renderToString(None({}));

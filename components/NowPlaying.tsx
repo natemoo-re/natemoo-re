@@ -10,25 +10,20 @@ export interface Props {
 
 export const None: React.FC = () => {
       return (
-        <Svg width="418" height="226">
-          <Text family="mono" size="small">
-            No tunes...
-          </Text>
+        <Svg width="418" height="24">
+          <div style={{ display: "flex" }}>
+            <Text>No tunes...</Text>
+          </div>
         </Svg>
       );
 }
 
 export const Player: React.FC<Props> = ({ track, artist }) => {
     return (
-      <Svg width="418" height="226">
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <Text>
-            Now Playing
-          </Text>
-          <div style={{ marginTop: 8, display: "flex" }}>
-            <Text size="small" weight="bold">{track}</Text>
-            <Text size="small">{artist}</Text>
-          </div>
+      <Svg width="418" height="24">
+        <div style={{ display: "flex" }}>
+          <Text weight="bold">{track}{' '}</Text>
+          <Text>{artist}</Text>
         </div>
       </Svg>
     );

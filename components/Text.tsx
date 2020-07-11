@@ -27,7 +27,8 @@ const Text: React.FC<any> = ({ children = '', weight = 'default', family = 'defa
 
   return (
       <p
-        style={{ 
+        style={{
+          whiteSpace: 'pre',
           fontSize: `${sizes[size]}px`,
           lineHeight: 1.5,
           fontFamily: families[family],
