@@ -22,11 +22,11 @@ export const Player: React.FC<Props> = ({ track, artist }) => {
     return (
       <Svg width="418" height="226">
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <Text family="mono" weight="bold">
+          <Text>
             Now Playing
           </Text>
-          <div style={{ display: "flex" }}>
-            <Text size="small">{track} </Text>
+          <div style={{ marginTop: 8, display: "flex" }}>
+            <Text size="small" weight="bold">{track}</Text>
             <Text size="small">{artist}</Text>
           </div>
         </div>
