@@ -1,0 +1,34 @@
+{
+  "name": "natemoo-re",
+  "version": "1.0.0",
+  "description": "<div align=\"center\"> \t<br> \t<br> \t<img src=\"https://github.com/natemoo-re/natemoo-re/raw/master/hey.svg?sanitize=true\" width=\"382\" height=\"256\">     <br> \t<p>I'm Nate.</p> \t<br> \t<br> </div>",
+  "main": "index.js",
+  "dependencies": {
+    "css-layout": "^1.1.1",
+    "isomorphic-unfetch": "^3.0.0",
+    "querystring": "^0.2.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-svg-flexbox": "^1.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^14.0.22",
+    "@types/react": "^16.9.42",
+    "@types/react-dom": "^16.9.8",
+    "@vercel/node": "^1.7.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/natemoo-re/natemoo-re.git"
+  },
+  "keywords": [],
+  "author": "Nate Moore",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/natemoo-re/natemoo-re/issues"
+  },
+  "homepage": "https://github.com/natemoo-re/natemoo-re#readme"
+}
