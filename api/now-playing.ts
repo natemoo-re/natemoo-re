@@ -25,7 +25,7 @@ export default async function (req: NowRequest, res: NowResponse) {
 
   const duration = item.duration_ms;
   const track = item.name;
-  const { images = [] } = item.album ?? {};
+  const { images = [] } = item.album || {};
 
   const cover = images[images.length - 1]?.url;
   let coverImg = null;
@@ -36,7 +36,7 @@ export default async function (req: NowRequest, res: NowResponse) {
     )}`;
   }
 
-  const artist = (item?.artists ?? []).map(({ name }) => name).join(', ');
+  const artist = (item?.artists || []).map(({ name }) => name).join(', ');
   const text = renderToString(
     Player({ cover: coverImg, artist, track, isPlaying, progress, duration })
   );
