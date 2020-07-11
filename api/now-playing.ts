@@ -9,12 +9,15 @@ export default async function (req: NowRequest, res: NowResponse) {
   const { item } = await nowPlaying();
 
   const params = decode(req.url.split('?')[1]) as any;
+  
   if (params && typeof params.open !== 'undefined') {
     res.writeHead(302, {
       Location: item.external_urls.spotify
     });
     return res.end();
   }
+
+  res.setHeader("Content-Type", "image/svg+xml");
 
   if (!item) {
     const text = renderToString(None({}));
