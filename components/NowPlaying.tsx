@@ -25,6 +25,7 @@ export const Player: React.FC<Props> = ({
         {`
             .paused { 
               animation-play-state: paused !important;
+              background: #e1e4e8 !important;
             }
 
             img:not([src]) {
@@ -124,7 +125,7 @@ export const Player: React.FC<Props> = ({
         style={{
           display: "flex",
           alignItems: "center",
-          paddingTop: 8
+          paddingTop: 8,
         }}
       >
         <img id="cover" src={cover ?? null} width="48" height="48" />
@@ -134,7 +135,7 @@ export const Player: React.FC<Props> = ({
             flex: 1,
             flexDirection: "column",
             marginTop: -4,
-            marginLeft: 8
+            marginLeft: 8,
           }}
         >
           <Text id="track" weight="bold">
