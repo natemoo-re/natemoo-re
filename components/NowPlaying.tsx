@@ -127,7 +127,7 @@ export const Player: React.FC<Props> = ({
           display: "flex",
           alignItems: "center",
           paddingTop: 8,
-          paddingLeft: 8
+          paddingLeft: 4
         }}
       >
         <img id="cover" src={cover ?? null} width="48" height="48" />
