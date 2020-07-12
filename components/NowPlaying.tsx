@@ -134,6 +134,7 @@ export const Player: React.FC<Props> = ({
             flex: 1,
             flexDirection: "column",
             marginTop: -4,
+            marginLeft: 8
           }}
         >
           <Text id="track" weight="bold">
