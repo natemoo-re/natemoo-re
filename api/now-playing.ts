@@ -36,7 +36,7 @@ export default async function (req: NowRequest, res: NowResponse) {
     )}`;
   }
 
-  const artist = (item?.artists || []).map(({ name }) => name).join(', ');
+  const artist = (item.artists || []).map(({ name }) => name).join(', ');
   const text = renderToString(
     Player({ cover: coverImg, artist, track, isPlaying, progress, duration })
   );
