@@ -23,16 +23,16 @@ export const Player: React.FC<Props> = ({
     <Svg width="256" height="64">
       <style>
         {`
-               .paused { 
-                  animation-play-state: paused !important;
-               }
+            .paused { 
+              animation-play-state: paused !important;
+            }
 
-               img:not([src]) {
-                content: url("data:image/gif;base64,R0lGODlhAQABAPAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==");
-                border-radius: 6px;
-                background: #FFF;
-                border: 1px solid #e1e4e8;
-               }
+            img:not([src]) {
+              content: url("data:image/gif;base64,R0lGODlhAQABAPAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==");
+              border-radius: 6px;
+              background: #FFF;
+              border: 1px solid #e1e4e8;
+            }
 
             p {
               display: block;
