@@ -21,7 +21,8 @@ export default async function (req: NowRequest, res: NowResponse) {
   }
 
   res.setHeader("Content-Type", "image/svg+xml");
-  res.setHeader("Cache-Control", "s-maxage=1, stale-while-revalidate");
+  // res.setHeader("Cache-Control", "s-maxage=1, stale-while-revalidate");
+  res.setHeader("Cache-Control", "no-cache");
 
   const duration = item.duration_ms;
   const track = item.name;
