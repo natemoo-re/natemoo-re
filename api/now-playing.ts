@@ -1,8 +1,8 @@
-import { NowRequest, NowResponse } from "@vercel/node";
-import { nowPlaying } from "../utils/spotify";
 import { renderToString } from 'react-dom/server';
-import { Player } from '../components/NowPlaying';
+import { NowRequest, NowResponse } from "@vercel/node";
 import { decode } from 'querystring';
+import { nowPlaying } from "../utils/spotify";
+import { Player } from '../components/NowPlaying';
 
 
 export default async function (req: NowRequest, res: NowResponse) {
@@ -24,8 +24,10 @@ export default async function (req: NowRequest, res: NowResponse) {
   // res.setHeader("Cache-Control", "s-maxage=1, stale-while-revalidate");
   res.setHeader("Cache-Control", "no-cache");
 
-  const duration = item.duration_ms;
-  const track = item.name;
+  const {
+    duration_ms: duration,
+    name: track,
+  } = item;
   const { images = [] } = item.album || {};
 
   const cover = images[images.length - 1]?.url;
