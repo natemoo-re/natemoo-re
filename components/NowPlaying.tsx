@@ -89,6 +89,10 @@ export const Player: React.FC<Props> = ({
               box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 3px 10px rgba(0,0,0,0.05);
             }
 
+            #cover:not([src]) {
+              box-shadow: none;
+            }
+
             @keyframes cover-appear {
               from {
                 opacity: 0;
