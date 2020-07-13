@@ -1,6 +1,4 @@
 {
-    "version": 2,
-    "rewrites": [
-        { "source": "/now-playing", "destination": "/api/now-playing" }
-    ]
+  "version": 2,
+  "rewrites": [{ "source": "/now-playing", "destination": "/api/now-playing" }]
 }

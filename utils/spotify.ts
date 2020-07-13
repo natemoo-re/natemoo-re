@@ -7,9 +7,7 @@ const {
   SPOTIFY_REFRESH_TOKEN: refresh_token,
 } = process.env;
 
-const basic = Buffer.from(`${client_id}:${client_secret}`).toString(
-  "base64"
-);
+const basic = Buffer.from(`${client_id}:${client_secret}`).toString("base64");
 const Authorization = `Basic ${basic}`;
 
 async function getAuthorizationToken() {
@@ -30,9 +28,8 @@ async function getAuthorizationToken() {
   return `Bearer ${response.access_token}`;
 }
 
-
 const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing`;
-export async function nowPlaying () {
+export async function nowPlaying() {
   const Authorization = await getAuthorizationToken();
   const response = await fetch(NOW_PLAYING_ENDPOINT, {
     headers: {
