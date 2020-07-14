@@ -2,8 +2,8 @@ import React from 'react';
 import { colors, colorNames } from '../utils/colors';
 const size = 32;
 
-
 const Block = ({ color }: { color: keyof typeof colors }) => {
+  console.log(color);
     return (
       <svg
         fill="none"
@@ -15,16 +15,18 @@ const Block = ({ color }: { color: keyof typeof colors }) => {
         {color === "RAINBOW" && (
           <style>{`
           #block {
-            animation: rainbow 4s ease-in-out infinite;
+            animation: RAINBOW 15s cubic-bezier(0.470, 0.020, 1.000, 0.570) infinite;
           }
 
-          @keyframes rainbow {
-            ${colorNames.slice(0, -1).map((name, i, { length: total }) => {
-              return `${Math.floor((i / (total - 1)) * 100)}% { 
+          @keyframes RAINBOW {
+            ${colorNames
+              .slice(0, -1)
+              .map((name, i, { length: total }) => {
+                return `${Math.floor((i / (total - 1)) * 100)}% {
                 fill: ${colors[name]};
               }`;
-            })
-          }
+              })
+              .join("\n")}
         `}</style>
         )}
         <rect
