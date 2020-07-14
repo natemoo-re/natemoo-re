@@ -9,7 +9,9 @@ export default async function (req: NowRequest, res: NowResponse) {
   const index = Number.parseInt(num as string) - 1;
   const image = !/text\/html/.test(accept);
 
-  res.setHeader("Cache-Control", "s-maxage=1, stale-while-revalidate");
+  // Ensure camo.githubusercontent does not cache resource as outlined in
+  // https://docs.github.com/en/github/authenticating-to-github/about-anonymized-image-urls#an-image-that-changed-recently-is-not-updating
+  res.setHeader("Cache-Control", "no-cache");
   
   const color = (await getBlockColor(index)) as any;
   if (image) {
@@ -19,5 +21,6 @@ export default async function (req: NowRequest, res: NowResponse) {
   
   const newColor: string = getNextColor(color);
   await setBlockColor(index, newColor);
+  console.log(req.headers.referer);
   return res.status(204).end();
 }
