@@ -13,7 +13,7 @@ export default async function (req: NowRequest, res: NowResponse) {
   // https://docs.github.com/en/github/authenticating-to-github/about-anonymized-image-urls#an-image-that-changed-recently-is-not-updating
   res.setHeader(
     "Cache-Control",
-    "no-store"
+    "no-cache, max-age=0, must-revalidate"
   );
   
   const color = (await getBlockColor(index)) as any;
