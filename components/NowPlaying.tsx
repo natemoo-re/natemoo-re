@@ -1,5 +1,5 @@
 import React from "react";
-import Svg from "./Svg";
+import ReadmeImg from "./ReadmeImg";
 import Text from "./Text";
 
 export interface Props {
@@ -20,7 +20,7 @@ export const Player: React.FC<Props> = ({
   isPlaying,
 }) => {
   return (
-    <Svg width="256" height="64">
+    <ReadmeImg width="256" height="64">
       <style>
         {`
             .paused { 
@@ -157,6 +157,6 @@ export const Player: React.FC<Props> = ({
           )}
         </div>
       </div>
-    </Svg>
+    </ReadmeImg>
   );
 };
