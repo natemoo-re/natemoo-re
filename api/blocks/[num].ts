@@ -6,9 +6,9 @@ import { getNextColor } from '../../utils/colors';
 import { createHash } from 'crypto';
 
 export default async function (req: NowRequest, res: NowResponse) {
-  const { query: { num }, headers: { accept } } = req;
+  const { query: { num }, headers: { 'sec-fetch-dest': dest } } = req;
   const index = Number.parseInt(num as string) - 1;
-  const image = !/text\/html/.test(accept);
+  const image = dest === "image";
   
   const color = await getBlockColor(index);
   if (image) {
