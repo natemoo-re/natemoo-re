@@ -1,4 +1,4 @@
-<div align="center">
+<!-- <div align="center">
     <br>
     <br>
     <a href="http://status-dev.nmoo.dev/blocks/1">
@@ -33,4 +33,4 @@
 
 <a href="https://status.nmoo.dev/now-playing?open">
     <img src="https://status.nmoo.dev/now-playing" width="256" height="64" alt="Now Playing">
-</a>
+</a> -->
