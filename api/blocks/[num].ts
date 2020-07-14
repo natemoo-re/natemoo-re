@@ -11,7 +11,10 @@ export default async function (req: NowRequest, res: NowResponse) {
 
   // Ensure camo.githubusercontent does not cache resource as outlined in
   // https://docs.github.com/en/github/authenticating-to-github/about-anonymized-image-urls#an-image-that-changed-recently-is-not-updating
-  res.setHeader("Cache-Control", "no-cache");
+  res.setHeader(
+    "Cache-Control",
+    "no-store"
+  );
   
   const color = (await getBlockColor(index)) as any;
   if (image) {
