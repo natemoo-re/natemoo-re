@@ -1,6 +1,6 @@
 import React from "react";
 
-const Svg = ({ width, height, children }) => {
+const ReadmeImg = ({ width, height, children }) => {
   return (
     <svg
       fill="none"
@@ -24,4 +24,4 @@ const Svg = ({ width, height, children }) => {
   );
 };
 
-export default Svg;
+export default ReadmeImg;
