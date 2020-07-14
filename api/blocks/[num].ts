@@ -17,7 +17,7 @@ export default async function (req: NowRequest, res: NowResponse) {
     const svg = renderToString(Block({ color }));
     const etag = createHash("md5").update(svg).digest("hex");
     res.setHeader("Content-Type", "image/svg+xml");
-    res.setHeader("Cache-Control", "no-cache");
+    res.setHeader("Cache-Control", "no-cache, max-age=0");
     res.setHeader("Etag", etag);
     return res.status(200).send(svg);
   }
