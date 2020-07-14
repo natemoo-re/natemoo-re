@@ -21,6 +21,5 @@ export default async function (req: NowRequest, res: NowResponse) {
   
   const newColor: string = getNextColor(color);
   await setBlockColor(index, newColor);
-  console.log(req.headers.referer);
   return res.status(204).end();
 }
