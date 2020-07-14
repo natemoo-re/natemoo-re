@@ -12,6 +12,8 @@ export const colors = {
   RAINBOW: "RAINBOW"
 };
 
+export type Color = keyof typeof colors;
+
 export const colorNames = Object.keys(colors);
 
 export const getNextColor = (name: string) => {

@@ -1,19 +1,23 @@
 import { NowRequest, NowResponse } from "@vercel/node";
 import { renderToString } from "react-dom/server";
 import Block from '../../components/Block';
-import { getBlockData, setBlockColor } from "../../utils/db";
+import { getBlockColor, setBlockColor } from "../../utils/db";
 import { getNextColor } from '../../utils/colors';
+import { createHash } from 'crypto';
 
 export default async function (req: NowRequest, res: NowResponse) {
   const { query: { num }, headers: { accept } } = req;
   const index = Number.parseInt(num as string) - 1;
   const image = !/text\/html/.test(accept);
   
-  const { color, lastModified } = await getBlockData(index);
+  const color = await getBlockColor(index);
   if (image) {
+    const svg = renderToString(Block({ color }));
+    const etag = createHash("md5").update(svg).digest("hex");
     res.setHeader("Content-Type", "image/svg+xml");
-    lastModified && res.setHeader("Last-Modified", lastModified);
-    return res.status(200).send(renderToString(Block({ color })));
+    res.setHeader("Cache-Control", "no-cache");
+    res.setHeader("Etag", etag);
+    return res.status(200).send(svg);
   }
   
   const newColor: string = getNextColor(color);

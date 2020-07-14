@@ -1,6 +1,8 @@
 import faunadb from "faunadb";
 const { query: q } = faunadb;
 
+import { Color } from './colors';
+
 const blocks = [
     '270978642631197184',
     '270978658874688000',
@@ -18,11 +20,11 @@ const blockRef = (index: number) => {
     return q.Ref(q.Collection('blocks'), blockId);
 }
 
-export const getBlockData = async (index: number): Promise<{ color: any, lastModified?: string }> => {
-    const ref = blockRef(index);
-    const { data } = await client.query(q.Get(ref));
-    return data;
-}
+export const getBlockColor = async (index: number): Promise<Color> => {
+  const ref = blockRef(index);
+  const { data: { color } } = await client.query(q.Get(ref));
+  return color;
+};
 
 export const setBlockColor = async (index: number, color: string) => {
   const lastModified = new Date().toUTCString();
@@ -31,7 +33,7 @@ export const setBlockColor = async (index: number, color: string) => {
   const res = await client.query(
     q.Update(
         ref,
-        { data: { color, lastModified }}
+        { data: { color }}
     )
   )
   return res;
