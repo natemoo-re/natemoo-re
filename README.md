@@ -1,29 +1,29 @@
 <div align="center">
     <br>
     <br>
-    <a href="http://status-dev.nmoo.dev/blocks/1">
-        <img src="http://status-dev.nmoo.dev/blocks/1" width="32" height="32">
+    <a href="https://status-dev.nmoo.dev/blocks/1">
+        <img src="https://status-dev.nmoo.dev/blocks/1" width="32" height="32">
     </a>
-    <a href="http://status-dev.nmoo.dev/blocks/2">
-        <img src="http://status-dev.nmoo.dev/blocks/2" width="32" height="32">
+    <a href="https://status-dev.nmoo.dev/blocks/2">
+        <img src="https://status-dev.nmoo.dev/blocks/2" width="32" height="32">
     </a>
-    <a href="http://status-dev.nmoo.dev/blocks/3">
-        <img src="http://status-dev.nmoo.dev/blocks/3" width="32" height="32">
+    <a href="https://status-dev.nmoo.dev/blocks/3">
+        <img src="https://status-dev.nmoo.dev/blocks/3" width="32" height="32">
     </a>
-    <a href="http://status-dev.nmoo.dev/blocks/4">
-        <img src="http://status-dev.nmoo.dev/blocks/4" width="32" height="32">
+    <a href="https://status-dev.nmoo.dev/blocks/4">
+        <img src="https://status-dev.nmoo.dev/blocks/4" width="32" height="32">
     </a>
-    <a href="http://status-dev.nmoo.dev/blocks/5">
-        <img src="http://status-dev.nmoo.dev/blocks/5" width="32" height="32">
+    <a href="https://status-dev.nmoo.dev/blocks/5">
+        <img src="https://status-dev.nmoo.dev/blocks/5" width="32" height="32">
     </a>
-    <a href="http://status-dev.nmoo.dev/blocks/6">
-        <img src="http://status-dev.nmoo.dev/blocks/6" width="32" height="32">
+    <a href="https://status-dev.nmoo.dev/blocks/6">
+        <img src="https://status-dev.nmoo.dev/blocks/6" width="32" height="32">
     </a>
-    <a href="http://status-dev.nmoo.dev/blocks/7">
-        <img src="http://status-dev.nmoo.dev/blocks/7" width="32" height="32">
+    <a href="https://status-dev.nmoo.dev/blocks/7">
+        <img src="https://status-dev.nmoo.dev/blocks/7" width="32" height="32">
     </a>
-    <a href="http://status-dev.nmoo.dev/blocks/8">
-        <img src="http://status-dev.nmoo.dev/blocks/8" width="32" height="32">
+    <a href="https://status-dev.nmoo.dev/blocks/8">
+        <img src="https://status-dev.nmoo.dev/blocks/8" width="32" height="32">
     </a>
     <p align="center">Click and refresh to change block color</p>
     <br>
