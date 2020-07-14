@@ -18,18 +18,20 @@ const blockRef = (index: number) => {
     return q.Ref(q.Collection('blocks'), blockId);
 }
 
-export const getBlockColor = async (index: number): Promise<string> => {
+export const getBlockData = async (index: number): Promise<{ color: any, lastModified?: string }> => {
     const ref = blockRef(index);
-    const { data: { color } } = await client.query(q.Get(ref));
-    return color;
+    const { data } = await client.query(q.Get(ref));
+    return data;
 }
 
 export const setBlockColor = async (index: number, color: string) => {
+  const lastModified = new Date().toUTCString();
+
   const ref = blockRef(index);
   const res = await client.query(
     q.Update(
         ref,
-        { data: { color }}
+        { data: { color, lastModified }}
     )
   )
   return res;
