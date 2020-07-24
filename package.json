@@ -23,15 +23,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/natemoo-re/natemoo-re.git"
+    "url": "git+https://github.com/JoshLmao/now-playing-profile.git"
   },
   "keywords": [],
   "author": "Nate Moore",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/natemoo-re/natemoo-re/issues"
+    "url": "https://github.com/JoshLmao/now-playing-profile/issues"
   },
-  "homepage": "https://github.com/natemoo-re/natemoo-re#readme",
+  "homepage": "https://github.com/JoshLmao/now-playing-profile#readme",
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
