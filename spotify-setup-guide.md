@@ -52,7 +52,7 @@ Setup with a click of a button 😉
 Name: SPOTIFY_CLIENT_ID
 Value: MY_CLIENT_ID
 
-Name: CLIENT_SECRET
+Name: SPOTIFY_CLIENT_SECRET
 Value: MY_SECRET_ID
 
 Name: SPOTIFY_REFRESH_TOKEN
