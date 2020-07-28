@@ -33,6 +33,6 @@
 
 **Now Playing** on Spotify
 
-<a href="https://status.nmoo.dev/now-playing?open">
+<a href="https://now-playing-ten.vercel.app/now-playing?open">
     <img src="https://status.nmoo.dev/now-playing" width="256" height="64" alt="Now Playing">
 </a>
