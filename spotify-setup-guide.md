@@ -65,7 +65,7 @@ Value: MY_REFRESH_TOKEN
 
 ```
 <a href="https://MY_VERCEL_DEPLOYMENT_URL/now-playing?open">
-    <img src="https://MY_VERCEL_DEPLOYMENT_URL/now-playing" width="256" height="64" alt="Now Playing">`
+    <img src="https://MY_VERCEL_DEPLOYMENT_URL/now-playing" width="500" height="64" alt="Now Playing">`
 </a>
 ```
 
