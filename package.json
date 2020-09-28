@@ -19,6 +19,7 @@
     "@vercel/node": "^1.7.2",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
+    "open": "^7.2.1",
     "prettier": "^2.0.5"
   },
   "repository": {

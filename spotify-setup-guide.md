@@ -21,32 +21,30 @@ Setup with a click of a button 😉
 1. Navigate to [Spotify Dashboard](https://developer.spotify.com/dashboard/) and create a new app.
    <img src="https://i.imgur.com/msl76HF.png" height="300">
 
-2. Click, edit settings and add "https://localhost:3000/callback" to the "Redirect URIs" section
+2. Click, edit settings and add "http://localhost:3000/callback" to the "Redirect URIs" section then save
    <img src="https://i.imgur.com/wm4IoDH.png" height="400">
 
-3. Next, we need to do a [Authoration Code flow](https://developer.spotify.com/documentation/general/guides/authorization-guide/#authorization-code-flow) auth request to retrieve a Refresh Token.
+3. Click 'SHOW CLIENT SECRET' under Client ID. Copy both Client ID and Client Secret and paste them into `.env` file in the root directory of this repository (create the file if it does not exist) like so:
 
-   - Replace "MY_CLIENT_ID" in the following url with your Client ID from your Spotify Dashboard and paste the url in your browser. Your client id and secret id can be found in your dashboard, pic below
+```ini
+SPOTIFY_CLIENT_ID=1234567890
+SPOTIFY_CLIENT_SECRET=1234567890
+```
 
-   https://accounts.spotify.com/authorize?client_id=MY_CLIENT_ID&response_type=code&redirect_uri=https%3A%2F%2Flocalhost%3A3000%2Fcallback&scope=user-read-playback-state%20user-read-currently-playing
-   <img src="https://i.imgur.com/VzY5Uxv.png" >
+5. Next, we need to retrieve a Refresh Token through [Authoration Code flow](https://developer.spotify.com/documentation/general/guides/authorization-guide/#authorization-code-flow).
 
-   - Once done, you will get a blank page with a different url which is like "https://localhost:3000/callback?code=MY_CODE"
+There is a node script, `generateRefreshToken.js` to get this for you. Run the following commands:
 
-   - Next, navigate to [Base64Encode](https://www.base64encode.org/) and insert your client id and secret id **separated with a colon**. For example, "CLIENT_ID:SECRET_ID"
+```bash
+npm install
+node ./generateRefreshToken.js # You will be asked to login to your spotify account
+```
 
-   - Then, insert your **base 64 encoded string** and **code** from the previous steps in the following command and press enter to run.
+6. Navigate to your deployment on Vercel and click on Settings, then click on "Environment Variables"
 
-   curl -H "Authorization: Basic MY_BASE_64_STRING" -d grant_type=authorization_code -d code=MY_SPOTIFY_CODE -d redirect_uri=https%3A%2F%2Flocalhost%3A3000%2Fcallback https://accounts.spotify.com/api/token
-
-   <img src="https://i.imgur.com/tnaCoqj.png">
-
-   - Once done correctly, you will get JSON which contains your refresh token, shown in the blue box in the image above. Take out the refresh token, blocked out in green above, and save it somewhere
-
-4. Navigate to your deployment on Vercel and click on Settings, then click on "Environment Variables"
    <img src="https://i.imgur.com/kUEW5Tt.png" height=400 />
 
-5. Insert the following Variable names and insert your values from the previous steps
+7. Insert the following Variable names and insert your values from the previous steps
 
 ```
 Name: SPOTIFY_CLIENT_ID
@@ -59,9 +57,9 @@ Name: SPOTIFY_REFRESH_TOKEN
 Value: MY_REFRESH_TOKEN
 ```
 
-6. Once done, navigate to one of your deployment url's and place "/now-playing" at the end. For example, "https://now-playing-joshlmao.vercel.app/now-playing"
+8. Once done, navigate to one of your deployment url's and place "/now-playing" at the end. For example, "https://now-playing-joshlmao.vercel.app/now-playing"
 
-7. Replace "MY_VERCEL_DEPLOYMENT_URL" in the following code with one of your deployment url's and insert it into any ReadMe.md
+9. Replace "MY_VERCEL_DEPLOYMENT_URL" in the following code with one of your deployment url's and insert it into any ReadMe.md
 
 ```
 <a href="https://MY_VERCEL_DEPLOYMENT_URL/now-playing?open">
