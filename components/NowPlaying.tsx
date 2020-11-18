@@ -60,7 +60,7 @@ export const Player: React.FC<Props> = ({
               top: -1px;
               left: 0;
               width: 100%;
-              max-width: 408px;
+              max-width: 360px;
               height: 6px;
               transform-origin: left center;
               background-color: #24292e;
