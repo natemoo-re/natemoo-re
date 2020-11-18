@@ -46,7 +46,7 @@ export const Player: React.FC<Props> = ({
             .progress-bar {
               position: relative;
               width: 100%;
-              max-width: 415px;
+              max-width: 360px;
               height: 4px;
               margin: -1px;
               border: 1px solid #e1e4e8;
