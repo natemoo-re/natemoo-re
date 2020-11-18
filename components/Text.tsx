@@ -1,6 +1,7 @@
 import React from "react";
 
 const sizes = {
+  large: 16,
   default: 14,
   small: 12,
 };
@@ -29,11 +30,13 @@ const Text: React.FC<any> = ({
   family = "default",
   color = "default",
   size = "default",
+  style = {},
   ...props
 }) => {
   return (
     <p
       style={{
+        ...style,
         whiteSpace: "pre",
         fontSize: `${sizes[size]}px`,
         lineHeight: 1.5,

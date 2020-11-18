@@ -1,5 +1,6 @@
 import fetch from "isomorphic-unfetch";
 import { stringify } from "querystring";
+import { URLSearchParams } from 'url';
 
 const {
   SPOTIFY_CLIENT_ID: client_id,
@@ -9,6 +10,7 @@ const {
 
 const basic = Buffer.from(`${client_id}:${client_secret}`).toString("base64");
 const Authorization = `Basic ${basic}`;
+const BASE_URL = `https://api.spotify.com/v1`;
 
 async function getAuthorizationToken() {
   const url = new URL("https://accounts.spotify.com/api/token");
@@ -28,10 +30,10 @@ async function getAuthorizationToken() {
   return `Bearer ${response.access_token}`;
 }
 
-const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing`;
-export async function nowPlaying() {
+const NOW_PLAYING_ENDPOINT = `/me/player/currently-playing`;
+export async function nowPlaying(): Promise<Partial<SpotifyApi.CurrentlyPlayingResponse>> {
   const Authorization = await getAuthorizationToken();
-  const response = await fetch(NOW_PLAYING_ENDPOINT, {
+  const response = await fetch(`${BASE_URL}${NOW_PLAYING_ENDPOINT}`, {
     headers: {
       Authorization,
     },
@@ -42,5 +44,26 @@ export async function nowPlaying() {
   } else if (status === 200) {
     const data = await response.json();
     return data;
+  }
+}
+
+const TOP_TRACKS_ENDPOINT = `/me/top/tracks`;
+export async function topTrack({ index, timeRange = 'short_term' }: { index: number, timeRange?: 'long_term'|'medium_term'|'short_term' }): Promise<SpotifyApi.TrackObjectFull> {
+  const Authorization = await getAuthorizationToken();
+  const params = new URLSearchParams();
+  params.set('limit', '1');
+  params.set('offset', `${index}`);
+  params.set('time_range', `${timeRange}`);
+  const response = await fetch(`${BASE_URL}${TOP_TRACKS_ENDPOINT}?${params}`, {
+    headers: {
+      Authorization
+    },
+  });
+  const { status } = response;
+  if (status === 204) {
+    return null;
+  } else if (status === 200) {
+    const data = await response.json() as SpotifyApi.UsersTopTracksResponse;
+    return data.items[0];
   }
 }

@@ -1,19 +1,18 @@
 import { NowRequest, NowResponse } from "@vercel/node";
 import { renderToString } from "react-dom/server";
-import { decode } from "querystring";
-import { Player } from "../components/NowPlaying";
-import { nowPlaying } from "../utils/spotify";
+import { Track } from "../components/Track";
+import { topTrack } from "../utils/spotify";
 
 export default async function (req: NowRequest, res: NowResponse) {
-  const {
-    item = ({} as any),
-    is_playing: isPlaying = false,
-    progress_ms: progress = 0,
-  } = await nowPlaying();
+  let { i, open } = req.query;
+  i = Array.isArray(i) ? i[0] : i;
+  const item = await topTrack({ index: Number.parseInt(i) });
+  
+  if (!item) {
+      return res.status(404).end();
+  }
 
-  const params = decode(req.url.split("?")[1]) as any;
-
-  if (params && typeof params.open !== "undefined") {
+  if (typeof open !== "undefined") {
     if (item && item.external_urls) {
       res.writeHead(302, {
         Location: item.external_urls.spotify,
@@ -26,7 +25,7 @@ export default async function (req: NowRequest, res: NowResponse) {
   res.setHeader("Content-Type", "image/svg+xml");
   res.setHeader("Cache-Control", "s-maxage=1, stale-while-revalidate");
 
-  const { duration_ms: duration, name: track } = item;
+  const { name: track } = item;
   const { images = [] } = item.album || {};
 
   const cover = images[images.length - 1]?.url;
@@ -38,7 +37,7 @@ export default async function (req: NowRequest, res: NowResponse) {
 
   const artist = (item.artists || []).map(({ name }) => name).join(", ");
   const text = renderToString(
-    Player({ cover: coverImg, artist, track, isPlaying, progress, duration })
+    Track({ index: Number.parseInt(i), cover: coverImg, artist, track })
   );
   return res.status(200).send(text);
 }

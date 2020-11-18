@@ -20,7 +20,7 @@ export const Player: React.FC<Props> = ({
   isPlaying,
 }) => {
   return (
-    <ReadmeImg width="256" height="64">
+    <ReadmeImg width="540" height="64">
       <style>
         {`
             .paused { 
@@ -30,9 +30,12 @@ export const Player: React.FC<Props> = ({
 
             img:not([src]) {
               content: url("data:image/gif;base64,R0lGODlhAQABAPAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==");
-              border-radius: 6px;
               background: #FFF;
               border: 1px solid #e1e4e8;
+            }
+
+            img {
+              border-radius: 3px;
             }
 
             p {
@@ -134,6 +137,7 @@ export const Player: React.FC<Props> = ({
           paddingLeft: 4,
         }}
       >
+        <div style={{ width: '16px', marginRight: '16px' }}></div>
         <img id="cover" src={cover ?? null} width="48" height="48" />
         <div
           style={{
