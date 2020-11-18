@@ -8,8 +8,25 @@ I'm most comfortable in that weird, funky world between design and developmentâ€
 | ------------------------------------------------------------------------------------------------------------------------------ |
 | <a href="https://status.nmoo.dev/now-playing?open"><img src="https://status.nmoo.dev/now-playing" width="540" height="64"></a> |
 
-| Top Tracks                                                                                                                           |
-| ------------------------------------------------------------------------------------------------------------------------------------ |
-| <a href="https://status.nmoo.dev/top-tracks?i=1&open"><img src="https://status.nmoo.dev/top-tracks?i=1" width="540" height="64"></a> |
-| <a href="https://status.nmoo.dev/top-tracks?i=2&open"><img src="https://status.nmoo.dev/top-tracks?i=2" width="540" height="64"></a> |
-| <a href="https://status.nmoo.dev/top-tracks?i=3&open"><img src="https://status.nmoo.dev/top-tracks?i=3" width="540" height="64"></a> |
+<p align="center">
+  <table>
+    <thead>
+      <tr>
+        <th>Top Tracks</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="https://status.nmoo.dev/top-tracks?i=1&open"><img src="https://status.nmoo.dev/top-tracks?i=1" width="540" height="64"></a></td>
+      </tr>
+      <tr></tr>
+      <tr>
+        <td><a href="https://status.nmoo.dev/top-tracks?i=2&open"><img src="https://status.nmoo.dev/top-tracks?i=2" width="540" height="64"></a></td>
+      </tr>
+      <tr></tr>
+      <tr>
+        <td><a href="https://status.nmoo.dev/top-tracks?i=3&open"><img src="https://status.nmoo.dev/top-tracks?i=3" width="540" height="64"></a></td>
+      </tr>
+    </tbody>
+  </table>
+</p>
