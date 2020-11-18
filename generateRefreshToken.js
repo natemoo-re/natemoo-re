@@ -13,7 +13,9 @@ if (fs.existsSync(".env")) {
 }
 
 if (process.env["SPOTIFY_REFRESH_TOKEN"]) {
-  console.log("Spotify Refresh Token already set, skipping Generation of Refresh Token.");
+  console.log(
+    "Spotify Refresh Token already set, skipping Generation of Refresh Token."
+  );
   process.exit(0);
 }
 
@@ -25,22 +27,25 @@ requiredConfigs.forEach((config) => {
   const envVar = process.env[config];
 
   if (!envVar) {
-    console.error(`Missing config ${envVar}, set as environment variable or add to .env file.`);
+    console.error(
+      `Missing config ${envVar}, set as environment variable or add to .env file.`
+    );
     process.exit(1);
   }
 
   configuration[config] = envVar;
 });
 
-
 const getSpotifyToken = async (authCode) => {
-  const encodedCredentials = Buffer.from(`${configuration["SPOTIFY_CLIENT_ID"]}:${configuration["SPOTIFY_CLIENT_SECRET"]}`).toString("base64");
+  const encodedCredentials = Buffer.from(
+    `${configuration["SPOTIFY_CLIENT_ID"]}:${configuration["SPOTIFY_CLIENT_SECRET"]}`
+  ).toString("base64");
 
   const getSpotifyTokenUrl = "https://accounts.spotify.com/api/token";
   const body = {
     grant_type: "authorization_code",
     code: authCode,
-    redirect_uri: `http://localhost:${SERVER_PORT}/callback`
+    redirect_uri: `http://localhost:${SERVER_PORT}/callback`,
   };
   const formUrlEncodedBody = querystring.stringify(body);
 
@@ -48,7 +53,7 @@ const getSpotifyToken = async (authCode) => {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
-      "Authorization": `Basic ${encodedCredentials}`
+      Authorization: `Basic ${encodedCredentials}`,
     },
     body: formUrlEncodedBody,
   };
@@ -59,20 +64,28 @@ const getSpotifyToken = async (authCode) => {
     const data = await response.json();
     return data;
   } else {
-    console.error(`Error retrieving access token: ${response.status} - ${response.statusText}`)
+    console.error(
+      `Error retrieving access token: ${response.status} - ${response.statusText}`
+    );
   }
 
   return null;
-}
+};
 
 const writeTokenToEnvFile = (refreshToken) => {
   if (fs.existsSync(".env")) {
-    fs.appendFile("./.env", `\nSPOTIFY_REFRESH_TOKEN=${refreshToken}`, function (err) {
-      if (err) throw err;
-      console.log("Refresh Token added to .env file");
-    });
+    fs.appendFile(
+      "./.env",
+      `\nSPOTIFY_REFRESH_TOKEN=${refreshToken}`,
+      function (err) {
+        if (err) throw err;
+        console.log("Refresh Token added to .env file");
+      }
+    );
   } else {
-    fs.writeFile("./.env", `\nSPOTIFY_REFRESH_TOKEN=${refreshToken}`, function (err) {
+    fs.writeFile("./.env", `\nSPOTIFY_REFRESH_TOKEN=${refreshToken}`, function (
+      err
+    ) {
       if (err) throw err;
       console.log("Refresh Token added to .env file");
     });
@@ -102,4 +115,15 @@ const server = http.createServer(async function (req, res) {
 
 server.listen(SERVER_PORT);
 
-open(`https://accounts.spotify.com/authorize?client_id=${configuration["SPOTIFY_CLIENT_ID"]}&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A${SERVER_PORT}%2Fcallback&scope=user-read-playback-state%20user-read-currently-playing`);
+const SCOPES = [
+  "user-read-playback-state",
+  "user-read-currently-playing",
+  "user-top-read",
+];
+open(
+  `https://accounts.spotify.com/authorize?client_id=${
+    configuration["SPOTIFY_CLIENT_ID"]
+  }&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A${SERVER_PORT}%2Fcallback&scope=${SCOPES.join(
+    "%20"
+  )}`
+);
