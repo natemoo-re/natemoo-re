@@ -17,7 +17,7 @@ If you want to collect some data about my music behavior:
 <table>
   <thead>
     <tr>
-      <th>Top 3 Tracks</th>
+      <th>Top 5 Tracks</th>
     </tr>
   </thead>
   <tbody>
@@ -31,6 +31,12 @@ If you want to collect some data about my music behavior:
     <tr></tr> <!-- hide gray row -->
     <tr>
       <td><a href="https://d3nn7.vercel.app/top-tracks?i=3&open"><img src="https://d3nn7.vercel.app/top-tracks?i=3" width="540" height="64"></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://d3nn7.vercel.app/top-tracks?i=4&open"><img src="https://d3nn7.vercel.app/top-tracks?i=4" width="540" height="64"></a></td>
+    </tr>
+    <tr>
+      <td><a href="https://d3nn7.vercel.app/top-tracks?i=5&open"><img src="https://d3nn7.vercel.app/top-tracks?i=5" width="540" height="64"></a></td>
     </tr>
   </tbody>
 </table>
