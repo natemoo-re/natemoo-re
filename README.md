@@ -32,9 +32,11 @@ If you want to collect some data about my music behavior:
     <tr>
       <td><a href="https://d3nn7.vercel.app/top-tracks?i=3&open"><img src="https://d3nn7.vercel.app/top-tracks?i=3" width="540" height="64"></a></td>
     </tr>
+    <tr></tr>
     <tr>
       <td><a href="https://d3nn7.vercel.app/top-tracks?i=4&open"><img src="https://d3nn7.vercel.app/top-tracks?i=4" width="540" height="64"></a></td>
     </tr>
+    <tr></tr>
     <tr>
       <td><a href="https://d3nn7.vercel.app/top-tracks?i=5&open"><img src="https://d3nn7.vercel.app/top-tracks?i=5" width="540" height="64"></a></td>
     </tr>
