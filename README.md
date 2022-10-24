@@ -7,6 +7,9 @@ the Founder and CEO of [Slynite](https://slynite.com) & [deine-Landschaft](https
 I think open source is a great solution to show everyone what a product or software does with the user's data.
 
 ---
+[![@d3nn7's Holopin board](https://holopin.me/d3nn7)](https://holopin.io/@d3nn7)
+
+---
 If you want to collect some data about my music behavior:
 
 | 🎵 Now Playing                                                                                                                    |
