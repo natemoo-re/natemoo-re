@@ -48,7 +48,7 @@ export async function nowPlaying(): Promise<Partial<SpotifyApi.CurrentlyPlayingR
 }
 
 const TOP_TRACKS_ENDPOINT = `/me/top/tracks`;
-export async function topTrack({ index, timeRange = 'short_term' }: { index: number, timeRange?: 'long_term'|'medium_term'|'short_term' }): Promise<SpotifyApi.TrackObjectFull> {
+export async function topTrack({ index, timeRange = 'long_term' }: { index: number, timeRange?: 'long_term'|'medium_term'|'short_term' }): Promise<SpotifyApi.TrackObjectFull> {
   const Authorization = await getAuthorizationToken();
   const params = new URLSearchParams();
   params.set('limit', '1');
