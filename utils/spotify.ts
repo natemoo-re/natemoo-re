@@ -67,3 +67,22 @@ export async function topTrack({ index, timeRange = 'long_term' }: { index: numb
     return data.items[0];
   }
 }
+
+export async function topTrackAlbum({ timeRange = 'long_term' }: { timeRange?: 'long_term'|'medium_term'|'short_term' }) {
+  const Authorization = await getAuthorizationToken();
+  const params = new URLSearchParams();
+  params.set('limit', '49');
+  params.set('time_range', `${timeRange}`);
+  const response = await fetch(`${BASE_URL}${TOP_TRACKS_ENDPOINT}?${params}`, {
+    headers: {
+      Authorization
+    },
+  });
+  const { status } = response;
+  if (status === 204) {
+    return null;
+  } else if (status === 200) {
+    const data = await response.json() as SpotifyApi.UsersTopTracksResponse;
+    return data.items;
+  }
+}

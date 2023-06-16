@@ -5,15 +5,17 @@ import Text from "./Text";
 export interface Props {
   index?: number,
   cover?: string;
-  track: string;
-  artist: string;
+  albumName: string;
+  albumArtist: string;
+  albumYear: string;
 }
 
-export const Track: React.FC<Props> = ({
+export const Album: React.FC<Props> = ({
   index,
   cover,
-  track,
-  artist,
+  albumName,
+  albumArtist,
+  albumYear,
 }) => {
   return (
     <ReadmeImg width="540" height="64">
@@ -65,11 +67,11 @@ export const Track: React.FC<Props> = ({
             marginLeft: 8,
           }}
         >
-          <Text id="track" weight="bold">
-            {`${track ?? ""} `.trim()}
+          <Text id="album" weight="bold">
+            {`${albumName ?? ""} `.trim()}
           </Text>
-          <Text id="artist" color={!track ? "gray" : undefined}>
-            {artist || "Nothing playing..."}
+          <Text id="artist" color={!albumName ? "gray" : undefined}>
+            {albumYear + " - " + albumArtist || "Nothing playing..."}
           </Text>
         </div>
       </div>
