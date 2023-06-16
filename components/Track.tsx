@@ -16,7 +16,7 @@ export const Track: React.FC<Props> = ({
   artist,
 }) => {
   return (
-    <ReadmeImg width="540" height="64">
+    <ReadmeImg width="350" height="64">
       <style>
         {`
             @media (prefers-color-scheme: dark) {
