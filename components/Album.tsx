@@ -18,7 +18,7 @@ export const Album: React.FC<Props> = ({
   albumYear,
 }) => {
   return (
-    <ReadmeImg width="540" height="64">
+    <ReadmeImg width="450" height="64">
       <style>
         {`
             @media (prefers-color-scheme: dark) {
