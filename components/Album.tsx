@@ -71,7 +71,7 @@ export const Album: React.FC<Props> = ({
             {`${albumName ?? ""} `.trim()}
           </Text>
           <Text id="artist" color={!albumName ? "gray" : undefined}>
-            {albumYear + " - " + albumArtist || "Nothing playing..."}
+            {albumYear + " • " + albumArtist || "Nothing playing..."}
           </Text>
         </div>
       </div>
