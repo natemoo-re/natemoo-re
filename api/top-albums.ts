@@ -58,8 +58,8 @@ export default async function (req: NowRequest, res: NowResponse) {
   const albumName = albumSorts[Number.parseInt(i)-1][0]
   const albumArtist = albumSorts[Number.parseInt(i)-1][1]
   const albumYear = albumSorts[Number.parseInt(i)-1][2]
-  const albumUrl = albumSorts[Number.parseInt(i)-1][3]
-  const albumSpotifyUrl = albumSorts[Number.parseInt(i)-1][4] 
+  const albumUrl = albumSorts[Number.parseInt(i)-1][4]
+  const albumSpotifyUrl = albumSorts[Number.parseInt(i)-1][5] 
 
   const text = renderToString(
     Album({ index: Number.parseInt(i), cover: coverImg, albumName, albumArtist, albumYear })
