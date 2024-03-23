@@ -1,6 +1,7 @@
 import React from "react";
 import ReadmeImg from "./ReadmeImg";
 import Text from "./Text";
+import React, { useEffect } from 'react';
 
 export interface Props {
   cover?: string;
@@ -11,30 +12,6 @@ export interface Props {
   isPlaying: boolean;
 }
 
-// Function to get the system theme
-function getSystemTheme() {
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-}
-
-// Function to set the background color based on the detected theme
-function setBackgroundColor(theme) {
-  const element = document.getElementById('progress'); // Replace 'myElement' with your tag's ID
-  if (theme === 'dark') {
-    element.style.backgroundColor = '#FAF9F6'; // Dark background color
-  } else {
-    element.style.backgroundColor = '#24292e'; // Light background color
-  }
-}
-
-// Event listener for theme changes
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
-  setBackgroundColor(event.matches ? 'dark' : 'light');
-});
-
-// Initial setup
-const systemTheme = getSystemTheme();
-setBackgroundColor(systemTheme);
-
 export const Player: React.FC<Props> = ({
   cover,
   track,
@@ -43,6 +20,40 @@ export const Player: React.FC<Props> = ({
   duration,
   isPlaying,
 }) => {
+  useEffect(() => {
+    // Function to get the system theme
+    function getSystemTheme() {
+      if (typeof window !== 'undefined') {
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      return 'light'; // Default to light theme on the server
+    }
+
+    // Function to set the background color based on the detected theme
+    function setBackgroundColor(theme) {
+      const element = document.getElementById('progress');
+      if (element) {
+        if (theme === 'dark') {
+          element.style.backgroundColor = '#FAF9F6';
+        } else {
+          element.style.backgroundColor = '#24292e';
+        }
+      }
+    }
+
+    // Event listener for theme changes
+    if (typeof window !== 'undefined') {
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
+        setBackgroundColor(event.matches ? 'dark' : 'light');
+      });
+    }
+
+    // Initial setup
+    const systemTheme = getSystemTheme();
+    setBackgroundColor(systemTheme);
+  }, []);
+
+
   return (
     <ReadmeImg width="540" height="64">
       <style>
