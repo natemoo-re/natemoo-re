@@ -1,7 +1,6 @@
-import React from "react";
+import React,{ useEffect } from "react";
 import ReadmeImg from "./ReadmeImg";
 import Text from "./Text";
-import React, { useEffect } from 'react';
 
 export interface Props {
   cover?: string;
