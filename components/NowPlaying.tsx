@@ -11,6 +11,30 @@ export interface Props {
   isPlaying: boolean;
 }
 
+// Function to get the system theme
+function getSystemTheme() {
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+
+// Function to set the background color based on the detected theme
+function setBackgroundColor(theme) {
+  const element = document.getElementById('progress'); // Replace 'myElement' with your tag's ID
+  if (theme === 'dark') {
+    element.style.backgroundColor = '#FAF9F6'; // Dark background color
+  } else {
+    element.style.backgroundColor = '#24292e'; // Light background color
+  }
+}
+
+// Event listener for theme changes
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
+  setBackgroundColor(event.matches ? 'dark' : 'light');
+});
+
+// Initial setup
+const systemTheme = getSystemTheme();
+setBackgroundColor(systemTheme);
+
 export const Player: React.FC<Props> = ({
   cover,
   track,
@@ -63,7 +87,7 @@ export const Player: React.FC<Props> = ({
               width: 100%;
               height: 6px;
               transform-origin: left center;
-              background-color: #24292e;
+              // background-color: #24292e;
               animation: progress ${duration}ms linear;
               animation-delay: -${progress}ms;
             }
