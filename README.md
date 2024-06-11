@@ -1,16 +1,14 @@
 # Hey, I'm Nate!
 
+### I build beautiful, intuitive CLIs and [open source tooling](https://github.com/natemoo-re/clack) to empower fellow creatives.
+
+Previously, I co-created [Astro](https://github.com/withastro/astro) as a founding engineer at [The Astro Technology Company](https://astro.build/blog/the-astro-technology-company/). Before that, I built [Microsite](https://github.com/natemoo-re/microsite), the first web framework for [islands architecture](https://www.patterns.dev/vanilla/islands-architecture/).
+
+My passion for building high-polish, delightful devtools is informed by my background in print design, desire to sweat the details, and refusal to settle for tools that can only be described as "good enough". 
+
+**Radically empathetic technology can illuminate our path towards a more just future.**
+
 <a href="https://github.com/sponsors/natemoo-re" title="Sponsor Nate Moore"><img src="/assets/sponsor.svg?sanitize=true" width="94" height="28" aria-hidden="true"></a>
-
-### I'm a co-creator and core maintainer of [Astro  🚀](https://github.com/snowpackjs/astro). You should [try it now](https://astro.new), in your browser!
-
-Recently, I was the architect of Astro's [WASM-powered compiler](https://github.com/snowpackjs/astro-compiler-next) written in Go ✨. This whole journey began with a SSG I created called [Microsite](https://github.com/natemoo-re/microsite) 🤏. Before that, I was really into writing utility web components like [`animate-presence`](https://github.com/natemoo-re/animate-presence) and [`konami-listener`](https://github.com/natemoo-re/konami-listener).
-
-As a former Graphic Designer, I'll always have a soft spot for design. The space between development and design is where I thrive.
-
-> If you're interested in the work I do, please consider sponsoring me on GitHub!
-
-Find me on <a rel="me" href="https://mas.to/@nmoo">Mastodon</a>.
 
 ---
 
