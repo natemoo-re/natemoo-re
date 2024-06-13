@@ -1,6 +1,6 @@
 # Hey, I'm Nate!
 
-### I build beautiful, intuitive CLIs and [open source tooling](https://github.com/natemoo-re/clack) to empower fellow creatives.
+### I build beautiful, intuitive CLI tools that empower fellow creatives. [Bombshell](https://github.com/bombshell) is open source.
 
 Previously, I co-created [Astro](https://github.com/withastro/astro) as a founding engineer at [The Astro Technology Company](https://astro.build/blog/the-astro-technology-company/). Before that, I built [Microsite](https://github.com/natemoo-re/microsite), the first web framework for [islands architecture](https://www.patterns.dev/vanilla/islands-architecture/).
 
