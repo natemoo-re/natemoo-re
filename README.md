@@ -1,12 +1,12 @@
 # Hey, I'm Nate!
 
-### I build beautiful, intuitive CLI tools that empower fellow creatives as [Bombshell](https://github.com/bombshell-dev).
+### I build beautiful, intuitive CLI tools that empower fellow creatives as part of [Bombshell](https://github.com/bombshell-dev).
 
-Previously, I co-created [Astro](https://github.com/withastro/astro) as a founding engineer at [The Astro Technology Company](https://astro.build/blog/the-astro-technology-company/). Before that, I built [Microsite](https://github.com/natemoo-re/microsite), the first web framework for [islands architecture](https://www.patterns.dev/vanilla/islands-architecture/).
+Currently working on UX at [Sentry](https://sentry.io/). Previously, I co-created [Astro](https://github.com/withastro/astro) as a founding engineer at [The Astro Technology Company](https://astro.build/blog/the-astro-technology-company/). Before that, I built [Microsite](https://github.com/natemoo-re/microsite), the first web framework for [islands architecture](https://www.patterns.dev/vanilla/islands-architecture/).
 
-My passion for building high-polish, delightful devtools is informed by my background in print design, desire to sweat the details, and refusal to settle for tools that can only be described as "good enough". 
+My passion for building high-polish, delightful devtools is informed by my background in print design, desire to sweat the details, and refusal to settle for tools that can only be described as "good enough".
 
-**Radically empathetic technology can illuminate our path towards a more just future.**
+**Radically empathetic technology illuminates our path towards a more just future.**
 
 <a href="https://github.com/sponsors/natemoo-re" title="Sponsor Nate Moore"><img src="/assets/sponsor.svg?sanitize=true" width="94" height="28" aria-hidden="true"></a>
 
