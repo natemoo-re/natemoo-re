@@ -1,44 +1,60 @@
-import { VercelRequest, VercelResponse } from "@vercel/node";
+import { ReactNode } from "react";
 import { renderToStaticMarkup } from 'react-dom/server';
 import { Track } from "../components/Track";
 import { topTrack } from "../utils/spotify";
-import { ReactNode } from "react";
+import { toBase64 } from "../utils/encoding";
 
-export default async function (req: VercelRequest, res: VercelResponse) {
-  let { i, open } = req.query;
-  i = Array.isArray(i) ? i[0] : i;
-  const item = await topTrack({ index: Number.parseInt(i) });
-  
-  if (!item) {
-      return res.status(404).end();
-  }
+export default {
+  async fetch(request: Request): Promise<Response> {
+    const url = new URL(request.url);
 
-  if (typeof open !== "undefined") {
-    if (item && item.external_urls) {
-      res.writeHead(302, {
-        Location: item.external_urls.spotify,
-      });
-      return res.end();
+    const i = url.searchParams.get("i");
+
+    const index = Number.parseInt(i ?? "", 10);
+    const item = await topTrack({ index });
+
+    if (!item) {
+      return new Response(null, { status: 404 });
     }
-    return res.status(200).end();
-  }
 
-  res.setHeader("Content-Type", "image/svg+xml");
-  res.setHeader("Cache-Control", "s-maxage=1, stale-while-revalidate");
+    // If `open` is present (any value, including empty), redirect if possible.
+    if (url.searchParams.has("open")) {
+      const location = item?.external_urls?.spotify;
 
-  const { name: track } = item;
-  const { images = [] } = item.album || {};
+      if (location) {
+        return new Response(null, {
+          status: 302,
+          headers: { Location: location },
+        });
+      }
 
-  const cover = images[images.length - 1]?.url;
-  let coverImg = null;
-  if (cover) {
-    const buff = await (await fetch(cover)).arrayBuffer();
-    coverImg = `data:image/jpeg;base64,${Buffer.from(buff).toString("base64")}`;
-  }
+      return new Response(null, { status: 200 });
+    }
 
-  const artist = (item.artists || []).map(({ name }) => name).join(", ");
-  const text = renderToStaticMarkup(
-    Track({ index: Number.parseInt(i), cover: coverImg, artist, track }) as ReactNode
-  );
-  return res.status(200).send(text);
-}
+    const { name: track } = item;
+    const { images = [] } = item.album ?? {};
+    const cover = images[images.length - 1]?.url;
+
+    let coverImg: string | null = null;
+    if (cover) {
+      const resp = await fetch(cover);
+      const buff = await resp.arrayBuffer();
+      coverImg = `data:image/jpeg;base64,${toBase64(buff)}`;
+    }
+
+    const artist = (item.artists ?? []).map(({ name }) => name).join(", ");
+
+    const text = renderToStaticMarkup(
+      Track({ index, cover: coverImg, artist, track }) as ReactNode
+    );
+
+    return new Response(text, {
+      status: 200,
+      headers: {
+        "Content-Type": "image/svg+xml",
+        "Cache-Control": "s-maxage=1, stale-while-revalidate",
+      },
+    });
+  },
+};
+

@@ -1,44 +1,68 @@
-import { VercelRequest, VercelResponse } from "@vercel/node";
 import { renderToStaticMarkup } from "react-dom/server";
 import { Player } from "../components/NowPlaying";
 import { nowPlaying } from "../utils/spotify";
 import { ReactNode } from "react";
+import { toBase64 } from "../utils/encoding";
 
-export default async function (req: VercelRequest, res: VercelResponse) {
-  const {
-    item = ({} as any),
-    is_playing: isPlaying = false,
-    progress_ms: progress = 0,
-  } = await nowPlaying();
+// Cloudflare Workers / WinterCG-style module worker
 
-  const params = new URL(req.url).searchParams;
+export default {
+  async fetch(request: Request): Promise<Response> {
+    const {
+      item = {} as any,
+      is_playing: isPlaying = false,
+      progress_ms: progress = 0,
+    } = await nowPlaying();
 
-  if (params && typeof params.has('open')) {
-    if (item && item.external_urls) {
-      res.writeHead(302, {
-        Location: item.external_urls.spotify,
-      });
-      return res.end();
+    const url = new URL(request.url);
+
+    // If `open` param is present, attempt redirect
+    if (url.searchParams.has("open")) {
+      const location = item?.external_urls?.spotify;
+
+      if (location) {
+        return new Response(null, {
+          status: 302,
+          headers: { Location: location },
+        });
+      }
+
+      return new Response(null, { status: 200 });
     }
-    return res.status(200).end();
-  }
 
-  res.setHeader("Content-Type", "image/svg+xml");
-  res.setHeader("Cache-Control", "s-maxage=1, stale-while-revalidate");
+    const { duration_ms: duration, name: track } = item ?? {};
+    const { images = [] } = item?.album ?? {};
 
-  const { duration_ms: duration, name: track } = item;
-  const { images = [] } = item.album || {};
+    const cover = images[images.length - 1]?.url;
 
-  const cover = images[images.length - 1]?.url;
-  let coverImg = null;
-  if (cover) {
-    const buff = await (await fetch(cover)).arrayBuffer();
-    coverImg = `data:image/jpeg;base64,${Buffer.from(buff).toString("base64")}`;
-  }
+    let coverImg: string | null = null;
+    if (cover) {
+      const resp = await fetch(cover);
+      const buff = await resp.arrayBuffer();
+      coverImg = `data:image/jpeg;base64,${toBase64(buff)}`;
+    }
 
-  const artist = (item.artists || []).map(({ name }) => name).join(", ");
-  const text = renderToStaticMarkup(
-    Player({ cover: coverImg, artist, track, isPlaying, progress, duration }) as ReactNode
-  );
-  return res.status(200).send(text);
-}
+    const artist = (item?.artists || [])
+      .map(({ name }: { name: string }) => name)
+      .join(", ");
+
+    const text = renderToStaticMarkup(
+      Player({
+        cover: coverImg,
+        artist,
+        track,
+        isPlaying,
+        progress,
+        duration,
+      }) as ReactNode
+    );
+
+    return new Response(text, {
+      status: 200,
+      headers: {
+        "Content-Type": "image/svg+xml",
+        "Cache-Control": "s-maxage=1, stale-while-revalidate",
+      },
+    });
+  },
+};
