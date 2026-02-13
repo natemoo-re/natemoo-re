@@ -1,6 +1,4 @@
-import fetch from "isomorphic-unfetch";
-import { stringify } from "querystring";
-import { URLSearchParams } from 'url';
+import { URLSearchParams } from 'node:url';
 
 const {
   SPOTIFY_CLIENT_ID: client_id,
@@ -14,10 +12,10 @@ const BASE_URL = `https://api.spotify.com/v1`;
 
 async function getAuthorizationToken() {
   const url = new URL("https://accounts.spotify.com/api/token");
-  const body = stringify({
+  const body = new URLSearchParams(Object.entries({
     grant_type: "refresh_token",
     refresh_token,
-  });
+  })).toString();
   const response = await fetch(`${url}`, {
     method: "POST",
     headers: {
