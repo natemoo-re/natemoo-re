@@ -1,6 +1,6 @@
 import React from "react";
-import ReadmeImg from "./ReadmeImg";
-import Text from "./Text";
+import ReadmeImg from "./ReadmeImg.js";
+import Text from "./Text.js";
 
 export interface Props {
   cover?: string;
@@ -138,7 +138,13 @@ export const Player: React.FC<Props> = ({
           paddingLeft: 4,
         }}
       >
-        <Text style={{ width: '16px', marginRight: '16px' }} size="large" weight="bold">{ isPlaying ? '▶' : '' }</Text>
+        <Text
+          style={{ width: "16px", marginRight: "16px" }}
+          size="large"
+          weight="bold"
+        >
+          {isPlaying ? "▶" : ""}
+        </Text>
         <img id="cover" src={cover ?? null} width="48" height="48" />
         <div
           style={{

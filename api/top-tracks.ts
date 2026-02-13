@@ -1,8 +1,9 @@
 import { ReactNode } from "react";
-import { renderToStaticMarkup } from 'react-dom/server';
-import { Track } from "../components/Track";
-import { topTrack } from "../utils/spotify";
-import { toBase64 } from "../utils/encoding";
+import { renderToStaticMarkup } from "react-dom/server";
+
+import { Track } from "../components/Track.js";
+import { topTrack } from "../utils/spotify.js";
+import { toBase64 } from "../utils/encoding.js";
 
 export default {
   async fetch(request: Request): Promise<Response> {
@@ -45,7 +46,7 @@ export default {
     const artist = (item.artists ?? []).map(({ name }) => name).join(", ");
 
     const text = renderToStaticMarkup(
-      Track({ index, cover: coverImg, artist, track }) as ReactNode
+      Track({ index, cover: coverImg, artist, track }) as ReactNode,
     );
 
     return new Response(text, {
@@ -57,4 +58,3 @@ export default {
     });
   },
 };
-

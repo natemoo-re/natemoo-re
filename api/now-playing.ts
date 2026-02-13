@@ -1,10 +1,8 @@
-import { renderToStaticMarkup } from "react-dom/server";
-import { Player } from "../components/NowPlaying";
-import { nowPlaying } from "../utils/spotify";
 import { ReactNode } from "react";
-import { toBase64 } from "../utils/encoding";
-
-// Cloudflare Workers / WinterCG-style module worker
+import { renderToStaticMarkup } from "react-dom/server";
+import { Player } from "../components/NowPlaying.js";
+import { nowPlaying } from "../utils/spotify.js";
+import { toBase64 } from "../utils/encoding.js";
 
 export default {
   async fetch(request: Request): Promise<Response> {
