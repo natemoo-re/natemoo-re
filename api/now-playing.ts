@@ -1,6 +1,5 @@
 import { VercelRequest, VercelResponse } from "@vercel/node";
 import { renderToStaticMarkup } from "react-dom/server";
-import { decode } from "querystring";
 import { Player } from "../components/NowPlaying";
 import { nowPlaying } from "../utils/spotify";
 import { ReactNode } from "react";
@@ -12,9 +11,9 @@ export default async function (req: VercelRequest, res: VercelResponse) {
     progress_ms: progress = 0,
   } = await nowPlaying();
 
-  const params = decode(req.url.split("?")[1]) as any;
+  const params = new URL(req.url).searchParams;
 
-  if (params && typeof params.open !== "undefined") {
+  if (params && typeof params.has('open')) {
     if (item && item.external_urls) {
       res.writeHead(302, {
         Location: item.external_urls.spotify,
