@@ -1,8 +1,8 @@
 import { ReactNode } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { Player } from "../components/NowPlaying.tsx";
-import { nowPlaying } from "../utils/spotify.ts";
-import { toBase64 } from "../utils/encoding.ts";
+import { Player } from "../components/NowPlaying.js";
+import { nowPlaying } from "../utils/spotify.js";
+import { toBase64 } from "../utils/encoding.js";
 
 export default {
   async fetch(request: Request): Promise<Response> {
