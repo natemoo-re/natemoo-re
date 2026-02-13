@@ -1,9 +1,9 @@
 import { ReactNode } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 
-import { Track } from "../components/Track.js";
-import { topTrack } from "../utils/spotify.js";
-import { toBase64 } from "../utils/encoding.js";
+import { Track } from "../components/Track.ts";
+import { topTrack } from "../utils/spotify.ts";
+import { toBase64 } from "../utils/encoding.ts";
 
 export default {
   async fetch(request: Request): Promise<Response> {
