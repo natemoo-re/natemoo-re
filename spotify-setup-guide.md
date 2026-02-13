@@ -21,7 +21,7 @@ Setup with a click of a button 😉
 1. Navigate to [Spotify Dashboard](https://developer.spotify.com/dashboard/) and create a new app.
    <img src="https://i.imgur.com/msl76HF.png" height="300">
 
-2. Click, edit settings and add "http://localhost:3000/callback" to the "Redirect URIs" section then save
+2. Click, edit settings and add "http://127.0.0.1:3000/callback" to the "Redirect URIs" section then save
    <img src="https://i.imgur.com/wm4IoDH.png" height="400">
 
 3. Click 'SHOW CLIENT SECRET' under Client ID. Copy both Client ID and Client Secret and paste them into `.env` file in the root directory of this repository (create the file if it does not exist) like so:
