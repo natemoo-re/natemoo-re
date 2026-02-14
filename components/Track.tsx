@@ -1,6 +1,6 @@
 import React from "react";
-import ReadmeImg from "./ReadmeImg.js";
-import Text from "./Text.js";
+import ReadmeImg from "./ReadmeImg.tsx";
+import Text from "./Text.tsx";
 
 export interface Props {
   index?: number,
