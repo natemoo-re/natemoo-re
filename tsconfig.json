@@ -7,11 +7,10 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
     "allowImportingTsExtensions": true,
     "rewriteRelativeImportExtensions": true,
-    "rootDir": "./",
-    "outDir": "./public/"
+    "rootDir": "src",
+    "outDir": "dist"
   },
   "include": [
     "**/*.ts",
