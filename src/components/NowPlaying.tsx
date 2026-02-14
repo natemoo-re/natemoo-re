@@ -1,12 +1,12 @@
 import React from "react";
-import ReadmeImg from "./ReadmeImg";
-import Text from "./Text";
+import ReadmeImg from "./ReadmeImg.tsx";
+import Text from "./Text.tsx";
 
 export interface Props {
   cover?: string;
   track: string;
   artist: string;
-  progress: number;
+  progress?: number | null;
   duration: number;
   isPlaying: boolean;
 }
@@ -65,7 +65,7 @@ export const Player: React.FC<Props> = ({
               transform-origin: left center;
               background-color: #24292e;
               animation: progress ${duration}ms linear;
-              animation-delay: -${progress}ms;
+              animation-delay: -${progress ?? 0}ms;
             }
             
             .progress-bar,
@@ -138,8 +138,14 @@ export const Player: React.FC<Props> = ({
           paddingLeft: 4,
         }}
       >
-        <Text style={{ width: '16px', marginRight: '16px' }} size="large" weight="bold">{ isPlaying ? '▶' : '' }</Text>
-        <img id="cover" src={cover ?? null} width="48" height="48" />
+        <Text
+          style={{ width: "16px", marginRight: "16px" }}
+          size="large"
+          weight="bold"
+        >
+          {isPlaying ? "▶" : ""}
+        </Text>
+        <img id="cover" src={cover ?? undefined} width="48" height="48" />
         <div
           style={{
             display: "flex",

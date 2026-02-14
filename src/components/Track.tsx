@@ -1,6 +1,6 @@
 import React from "react";
-import ReadmeImg from "./ReadmeImg";
-import Text from "./Text";
+import ReadmeImg from "./ReadmeImg.tsx";
+import Text from "./Text.tsx";
 
 export interface Props {
   index?: number,
@@ -55,7 +55,7 @@ export const Track: React.FC<Props> = ({
         }}
       >
         <Text style={{ width: '16px', marginRight: '16px' }} size="large" weight="bold">{index}</Text>
-        <img id="cover" src={cover ?? null} width="48" height="48" />
+        <img id="cover" src={cover} width="48" height="48" />
         <div
           style={{
             display: "flex",

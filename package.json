@@ -5,22 +5,21 @@
   "version": "1.0.0",
   "description": "Github profile",
   "main": "index.js",
+  "scripts": {
+    "watch": "tsgo -pw tsconfig.json",
+    "build": "tsgo -p tsconfig.json"
+  },
   "dependencies": {
-    "faunadb": "^2.14.2",
-    "isomorphic-unfetch": "^3.1.0",
-    "querystring": "^0.2.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "typescript": "^3.9.6"
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "@types/node": "^14.0.22",
-    "@types/react": "^16.9.42",
-    "@types/react-dom": "^16.9.8",
-    "@types/spotify-api": "0.0.5",
-    "@vercel/node": "^1.7.2",
-    "husky": "^4.2.5",
-    "lint-staged": "^10.2.11",
+    "@types/node": "^22.19.11",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@types/spotify-api": "^0.0.25",
+    "@typescript/native-preview": "7.0.0-dev.20260214.1",
     "open": "^7.2.1",
     "prettier": "^2.0.5"
   },
@@ -34,13 +33,5 @@
   "bugs": {
     "url": "https://github.com/natemoo-re/natemoo-re/issues"
   },
-  "homepage": "https://github.com/natemoo-re/natemoo-re#readme",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js,css,md}": "prettier --write"
-  }
+  "homepage": "https://github.com/natemoo-re/natemoo-re#readme"
 }

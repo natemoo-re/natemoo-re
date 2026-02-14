@@ -1,6 +1,6 @@
 import React from "react";
 
-const ReadmeImg = ({ width, height, children }) => {
+const ReadmeImg: React.FC<any> = ({ width, height, children }) => {
   return (
     <svg
       fill="none"
