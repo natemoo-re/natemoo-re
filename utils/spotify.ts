@@ -12,10 +12,10 @@ const BASE_URL = `https://api.spotify.com/v1`;
 
 async function getAuthorizationToken() {
   const url = new URL("https://accounts.spotify.com/api/token");
-  const body = new URLSearchParams(Object.entries({
+  const body = new URLSearchParams({
     grant_type: "refresh_token",
     refresh_token,
-  })).toString();
+  } as Record<string, string>).toString();
   const response = await fetch(`${url}`, {
     method: "POST",
     headers: {
@@ -43,10 +43,11 @@ export async function nowPlaying(): Promise<Partial<SpotifyApi.CurrentlyPlayingR
     const data = await response.json();
     return data;
   }
+  return {};
 }
 
 const TOP_TRACKS_ENDPOINT = `/me/top/tracks`;
-export async function topTrack({ index, timeRange = 'short_term' }: { index: number, timeRange?: 'long_term'|'medium_term'|'short_term' }): Promise<SpotifyApi.TrackObjectFull> {
+export async function topTrack({ index, timeRange = 'short_term' }: { index: number, timeRange?: 'long_term'|'medium_term'|'short_term' }): Promise<SpotifyApi.TrackObjectFull | null | undefined> {
   const Authorization = await getAuthorizationToken();
   const params = new URLSearchParams();
   params.set('limit', '1');
@@ -62,6 +63,6 @@ export async function topTrack({ index, timeRange = 'short_term' }: { index: num
     return null;
   } else if (status === 200) {
     const data = await response.json() as SpotifyApi.UsersTopTracksResponse;
-    return data.items[0];
+    return data.items[0] ?? null;
   }
 }

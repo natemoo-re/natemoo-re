@@ -33,7 +33,7 @@ export default {
 
     const cover = images[images.length - 1]?.url;
 
-    let coverImg: string | null = null;
+    let coverImg: string | undefined;
     if (cover) {
       const resp = await fetch(cover);
       const buff = await resp.arrayBuffer();

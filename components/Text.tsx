@@ -38,11 +38,11 @@ const Text: React.FC<any> = ({
       style={{
         ...style,
         whiteSpace: "pre",
-        fontSize: `${sizes[size]}px`,
+        fontSize: `${sizes[size as keyof typeof sizes]}px`,
         lineHeight: 1.5,
-        fontFamily: families[family],
-        color: colors[color],
-        fontWeight: weights[weight],
+        fontFamily: families[family as keyof typeof families],
+        color: colors[color as keyof typeof colors],
+        fontWeight: weights[weight as keyof typeof weights],
       }}
       {...props}
     >

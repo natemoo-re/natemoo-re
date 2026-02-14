@@ -1,9 +1,14 @@
 {
   "name": "natemoo-re",
   "private": true,
+  "type": "module",
   "version": "1.0.0",
   "description": "Github profile",
   "main": "index.js",
+  "scripts": {
+    "watch": "tsgo -pw tsconfig.json",
+    "build": "tsgo -p tsconfig.json"
+  },
   "dependencies": {
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
@@ -14,6 +19,7 @@
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@types/spotify-api": "^0.0.25",
+    "@typescript/native-preview": "7.0.0-dev.20260214.1",
     "open": "^7.2.1",
     "prettier": "^2.0.5"
   },
