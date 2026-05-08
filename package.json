@@ -19,7 +19,7 @@
     "@types/spotify-api": "^0.0.25",
     "open": "^7.2.1",
     "rolldown": "1.0.0-rc.4",
-    "vercel": "^50.17.1"
+    "vercel": "^52.2.0"
   },
   "repository": {
     "type": "git",
